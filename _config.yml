@@ -3,9 +3,9 @@
 # ----------------------- #
 
 url: http://huhuchen.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: the blog of huhuchen 
+subtitle: 记录成长.
+author: huhuchen
 simple_search: http://google.com/search
 description:
 
@@ -20,6 +20,12 @@ subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
+
+navigation:
+- text: Home
+  url: /index.html
+- text: Archives
+  url: /blog/archives/index.html
 
 # ----------------------- #
 #    Jekyll & Plugins     #
@@ -90,8 +96,8 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
-disqus_show_comment_count: false
+disqus_short_name: huhuchen
+disqus_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id:
