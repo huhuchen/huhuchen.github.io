@@ -26,6 +26,8 @@ navigation:
   url: /index.html
 - text: Archives
   url: /blog/archives/index.html
+- text: 推荐blogs
+  url: /recommend/index.html
 
 # ----------------------- #
 #    Jekyll & Plugins     #
