@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[the blog of huhuchen]]></title>
+  <link href="http://huhuchen.github.io/atom.xml" rel="self"/>
+  <link href="http://huhuchen.github.io/"/>
+  <updated>2014-11-16T20:40:52+08:00</updated>
+  <id>http://huhuchen.github.io/</id>
+  <author>
+    <name><![CDATA[huhuchen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Android进程或组件间通信机制的小结]]></title>
+    <link href="http://huhuchen.github.io/blog/2014/11/16/androidjin-cheng-huo-zu-jian-jian-tong-xin-ji-zhi-de-xiao-jie/"/>
+    <updated>2014-11-16T17:06:00+08:00</updated>
+    <id>http://huhuchen.github.io/blog/2014/11/16/androidjin-cheng-huo-zu-jian-jian-tong-xin-ji-zhi-de-xiao-jie</id>
+    <content type="html"><![CDATA[<p>test</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[python代码小记-效率及明确]]></title>
+    <link href="http://huhuchen.github.io/blog/2013/07/04/pythondai-ma-xiao-ji-xiao-lu-ji-ming-que/"/>
+    <updated>2013-07-04T19:46:00+08:00</updated>
+    <id>http://huhuchen.github.io/blog/2013/07/04/pythondai-ma-xiao-ji-xiao-lu-ji-ming-que</id>
+    <content type="html"><![CDATA[<p>今天写了一段代码，结果改了好几次，特此记录一下。</p>
+
+<p>功能：传入任意字符，将其decode为unicode字符。</p>
+
+<figure class='code'><figcaption><span>version1 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">chardet</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">convert_charset_to_unicode</span><span class="p">(</span><span class="n">charset</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">charset_encoding</span> <span class="o">=</span> <span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;encoding&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">default</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">charset_encoding</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>问题：</p>
+
+<ul>
+<li> 效率低下，通常大多数需要decode字符都是utf-8，也就是说只有少数的情况下需要detect
+ encoding。而现在的情况是每次decode都需要detect，而detect这个操作比较重，因此需要就效率进行一次优化。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>version2 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">chardet</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">convert_charset_to_unicode</span><span class="p">(</span><span class="n">charset</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">charset_encoding</span> <span class="o">=</span> <span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;encoding&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">default</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">charset_encoding</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>问题：</p>
+
+<ul>
+<li> 没有明确定义错误类型，当使用try..except..时，一般异常明确的时候需要指出其异常类型。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>version3 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">chardet</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">convert_charset_to_unicode</span><span class="p">(</span><span class="n">charset</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">charset_encoding</span> <span class="o">=</span> <span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;encoding&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">default</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">charset_encoding</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>小结：注重效率以及明确异常类型。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用github pages和octopress搭建blog]]></title>
+    <link href="http://huhuchen.github.io/blog/2013/06/29/shi-yong-github-pageshe-octopressda-jian-blog/"/>
+    <updated>2013-06-29T23:19:00+08:00</updated>
+    <id>http://huhuchen.github.io/blog/2013/06/29/shi-yong-github-pageshe-octopressda-jian-blog</id>
+    <content type="html"><![CDATA[<p>第一篇blog简单介绍下使用octopress在github pages上搭建blog的步骤。</p>
+
+<ul>
+<li> 首先参看Octopress官方文档 <a href="http://octopress.org/docs/setup/">Octopress Setup</a></li>
+<li> 我使用的主题是 <a href="https://github.com/alexgaribay/octoflat">Octoflat</a>  具体的<a href="http://alexgaribay.com/index.html">demo</a></li>
+<li> 博客正文是使用 <a href="http://wowubuntu.com/markdown/">Markdown</a></li>
+<li> comment使用的是Disqus。只需要在octopress的<code>_config.yml</code>里配置一下就行了。</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> disqus_short_name: your_disqus_short_name
+</span><span class='line'> disqus_show_comment_count: true</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

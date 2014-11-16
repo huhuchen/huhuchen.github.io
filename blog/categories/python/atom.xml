@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | the blog of huhuchen]]></title>
   <link href="http://huhuchen.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://huhuchen.github.io/"/>
-  <updated>2014-11-16T19:08:22+08:00</updated>
+  <updated>2014-11-16T20:40:52+08:00</updated>
   <id>http://huhuchen.github.io/</id>
   <author>
     <name><![CDATA[huhuchen]]></name>
@@ -22,15 +22,24 @@
 
 <p>功能：传入任意字符，将其decode为unicode字符。</p>
 
-<p>{% codeblock version1 lang:python %}
-import chardet
-def convert_charset_to_unicode(charset, default='utf-8'):</p>
-
-<pre><code>charset_encoding = chardet.detect(charset).get('encoding') or default
-return charset.decode(charset_encoding, 'ignore')
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>version1 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">chardet</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">convert_charset_to_unicode</span><span class="p">(</span><span class="n">charset</span><span class="p">,</span> <span class="n">default</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">charset_encoding</span> <span class="o">=</span> <span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;encoding&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">default</span>
+</span><span class='line'><span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">charset_encoding</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>问题：</p>
 
@@ -40,18 +49,30 @@ return charset.decode(charset_encoding, 'ignore')
 </ul>
 
 
-<p>{% codeblock version2 lang:python %}
-import chardet
-def convert_charset_to_unicode(charset, default='utf-8'):</p>
-
-<pre><code>try:
-    return charset.decode(default)
-except:
-    charset_encoding = chardet.detect(charset).get('encoding') or default
-    return charset.decode(charset_encoding, 'ignore')
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>version2 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">chardet</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">convert_charset_to_unicode</span><span class="p">(</span><span class="n">charset</span><span class="p">,</span> <span class="n">default</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">try</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
+</span><span class='line'><span class="k">except</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">charset_encoding</span> <span class="o">=</span> <span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;encoding&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">default</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">charset_encoding</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>问题：</p>
 
@@ -60,18 +81,30 @@ except:
 </ul>
 
 
-<p>{% codeblock version3 lang:python %}
-import chardet
-def convert_charset_to_unicode(charset, default='utf-8'):</p>
-
-<pre><code>try:
-    return charset.decode(default)
-except UnicodeDecodeError:
-    charset_encoding = chardet.detect(charset).get('encoding') or default
-    return charset.decode(charset_encoding, 'ignore')
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>version3 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">chardet</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">convert_charset_to_unicode</span><span class="p">(</span><span class="n">charset</span><span class="p">,</span> <span class="n">default</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">try</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
+</span><span class='line'><span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">charset_encoding</span> <span class="o">=</span> <span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;encoding&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">default</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">charset</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">charset_encoding</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>小结：注重效率以及明确异常类型。</p>
 ]]></content>
