@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | the blog of huhuchen]]></title>
+  <link href="http://huhuchen.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://huhuchen.github.io/"/>
+  <updated>2014-11-16T18:03:15+08:00</updated>
+  <id>http://huhuchen.github.io/</id>
+  <author>
+    <name><![CDATA[huhuchen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用github pages和octopress搭建blog]]></title>
+    <link href="http://huhuchen.github.io/blog/2013/06/29/shi-yong-github-pageshe-octopressda-jian-blog/"/>
+    <updated>2013-06-29T23:19:00+08:00</updated>
+    <id>http://huhuchen.github.io/blog/2013/06/29/shi-yong-github-pageshe-octopressda-jian-blog</id>
+    <content type="html"><![CDATA[<p>第一篇blog简单介绍下使用octopress在github pages上搭建blog的步骤。</p>
+
+<ul>
+<li> 首先参看Octopress官方文档 <a href="http://octopress.org/docs/setup/">Octopress Setup</a></li>
+<li> 我使用的主题是 <a href="https://github.com/alexgaribay/octoflat">Octoflat</a>  具体的<a href="http://alexgaribay.com/index.html">demo</a></li>
+<li> 博客正文是使用 <a href="http://wowubuntu.com/markdown/">Markdown</a></li>
+<li> comment使用的是Disqus。只需要在octopress的<code>_config.yml</code>里配置一下就行了。
+<code>
+disqus_short_name: your_disqus_short_name
+disqus_show_comment_count: true
+</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
