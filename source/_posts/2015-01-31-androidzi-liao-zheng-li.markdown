@@ -39,8 +39,12 @@ footer: true
   * [Google Android Developer Blogs](http://android-developers.blogspot.com/) 官方blog，最权威的地方
 
   * [Google Android 官方training中文版](http://hukai.me/android-training-course-in-chinese/index.html)
+  
+  * [bear老师初学建议](http://beartung.github.io/rockwithandroid/)
 
   * [老罗的Android之旅](http://blog.csdn.net/luoshengyang)
+
+  * [生命不息，奋斗不止 偏实战](http://blog.csdn.net/lmj623565791)
   
   * [stormzhang](http://www.stormzhang.com/) 国内开发者blog，其中[针对初学者的这篇blog很不错](http://www.stormzhang.com/android/2014/07/07/learn-android-from-rookie/)
 
@@ -57,3 +61,13 @@ footer: true
 ## UI 设计
   
   * [Android Niceties](http://androidniceties.tumblr.com/) A collection of screenshots encompassing some of the most beautiful looking Android apps.
+
+## 看过的书
+
+  * [Android开发精要](http://book.douban.com/subject/11530748/)
+  * [Java语言程序设计](http://book.douban.com/subject/6529833/)
+  * [Effective java 中文版](http://book.douban.com/subject/3360807/)
+
+## Android studio插件
+  
+  * [android-parcelable-intellij-plugin](https://github.com/mcharmas/android-parcelable-intellij-plugin)
