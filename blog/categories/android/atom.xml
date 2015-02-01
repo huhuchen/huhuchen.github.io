@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | the blog of huhuchen]]></title>
   <link href="http://huhuchen.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://huhuchen.github.io/"/>
-  <updated>2015-01-31T23:36:18+08:00</updated>
+  <updated>2015-02-01T23:26:29+08:00</updated>
   <id>http://huhuchen.github.io/</id>
   <author>
     <name><![CDATA[huhuchen]]></name>
@@ -57,7 +57,9 @@ Github上一哥们以项目的形式整理了Android的开源库</li>
 <ul>
 <li><p><a href="http://android-developers.blogspot.com/">Google Android Developer Blogs</a> 官方blog，最权威的地方</p></li>
 <li><p><a href="http://hukai.me/android-training-course-in-chinese/index.html">Google Android 官方training中文版</a></p></li>
+<li><p><a href="http://beartung.github.io/rockwithandroid/">bear老师初学建议</a></p></li>
 <li><p><a href="http://blog.csdn.net/luoshengyang">老罗的Android之旅</a></p></li>
+<li><p><a href="http://blog.csdn.net/lmj623565791">生命不息，奋斗不止 偏实战</a></p></li>
 <li><p><a href="http://www.stormzhang.com/">stormzhang</a> 国内开发者blog，其中<a href="http://www.stormzhang.com/android/2014/07/07/learn-android-from-rookie/">针对初学者的这篇blog很不错</a></p></li>
 <li><p><a href="http://blog.daimajia.com/">代码家</a></p></li>
 <li><p><a href="https://blog.stylingandroid.com/">Styling Android</a></p></li>
@@ -71,6 +73,22 @@ Github上一哥们以项目的形式整理了Android的开源库</li>
 
 <ul>
 <li><a href="http://androidniceties.tumblr.com/">Android Niceties</a> A collection of screenshots encompassing some of the most beautiful looking Android apps.</li>
+</ul>
+
+
+<h2>看过的书</h2>
+
+<ul>
+<li><a href="http://book.douban.com/subject/11530748/">Android开发精要</a></li>
+<li><a href="http://book.douban.com/subject/6529833/">Java语言程序设计</a></li>
+<li><a href="http://book.douban.com/subject/3360807/">Effective java 中文版</a></li>
+</ul>
+
+
+<h2>Android studio插件</h2>
+
+<ul>
+<li><a href="https://github.com/mcharmas/android-parcelable-intellij-plugin">android-parcelable-intellij-plugin</a></li>
 </ul>
 
 ]]></content>
